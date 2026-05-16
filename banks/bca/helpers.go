@@ -1,6 +1,10 @@
 package bca
 
-import "strings"
+import (
+	"strings"
+
+	"github.com/kankburhan/go-bankset/core"
+)
 
 // splitLines splits text into lines, normalizing line endings.
 func splitLines(text string) []string {
@@ -67,9 +71,7 @@ func parseCSVQuoted(line string) []string {
 	return fields
 }
 
-// formatBCADate converts BCA date format DD/MM/YYYY to a display string.
+// formatBCADate converts BCA date format DD/MM/YYYY to YYYY-MM-DD.
 func formatBCADate(date string) string {
-
-	date = cleanQuote(date)
-	return date
+	return core.ParseBCADate(cleanQuote(date))
 }

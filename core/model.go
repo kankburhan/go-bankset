@@ -27,6 +27,7 @@ type PocketGroup struct {
 }
 
 // Transaction represents a single transaction entry in a bank statement.
+// Date is always in "YYYY-MM-DD" format. Time is "HH:mm" or empty if unavailable.
 type Transaction struct {
 	Date			string	`json:"date"`
 	Time			string	`json:"time"`

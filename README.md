@@ -49,7 +49,7 @@ func main() {
       "name": "Main Pocket",
       "transactions": [
         {
-          "date": "13 Apr 2026",
+          "date": "2026-04-13",
           "time": "11:33",
           "source_destination": "JOHN DOE — Jago 100000000002",
           "transaction_detail": "RDN Disbursement",
@@ -165,6 +165,16 @@ banks/             — Bank-specific parsers
     bca_test.go    — BCA parser tests
 examples/          — Usage examples
 ```
+
+## Changelog
+
+### v0.2.0
+
+- **Unified date/time format across all banks**: `Transaction.Date` is now always `YYYY-MM-DD` and `Transaction.Time` is always `HH:mm` (empty string if unavailable). Previously each bank used its own format — Jago returned `"28 Mar 2022"`, BCA returned `"02/05/2026"`, BCA time used `"-"` as a placeholder. Callers can now do `time.Parse("2006-01-02", tx.Date)` directly without branching on bank type.
+
+### v0.1.0
+
+- Initial release: Bank Jago (monthly statement + history PDF) and BCA Personal/Bisnis (CSV e-statement) parsing.
 
 ## Privacy
 

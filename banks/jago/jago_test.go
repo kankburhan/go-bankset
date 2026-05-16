@@ -220,7 +220,7 @@ func TestJagoParser_HistoryPDF(t *testing.T) {
 	}
 
 	firstTx := pocket.Transactions[0]
-	assertEqual(t, "date", firstTx.Date, "28 Mar 2022")
+	assertEqual(t, "date", firstTx.Date, "2022-03-28")
 	assertEqual(t, "time", firstTx.Time, "13:29")
 	assertEqual(t, "source_destination", firstTx.SourceDestination, "Main Pocket")
 	if firstTx.Amount.Value != 200000 {
@@ -228,7 +228,7 @@ func TestJagoParser_HistoryPDF(t *testing.T) {
 	}
 
 	secondTx := pocket.Transactions[1]
-	assertEqual(t, "date", secondTx.Date, "28 Mar 2022")
+	assertEqual(t, "date", secondTx.Date, "2022-03-28")
 	assertEqual(t, "time", secondTx.Time, "13:32")
 	assertEqual(t, "source_destination", secondTx.SourceDestination, "acme")
 	if secondTx.Amount.Value != 930602 {

@@ -135,7 +135,7 @@ func (p *BisnisParser) parseBisnisRow(line string) core.Transaction {
 
 	return core.Transaction{
 		Date:			formatBCADate(date),
-		Time:			"-",
+		Time:			"",
 		SourceDestination:	"-",
 		TransactionDetail:	description,
 		MutationType:		mutationType,

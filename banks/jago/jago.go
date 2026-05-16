@@ -177,7 +177,7 @@ func (p *JagoParser) looksLikePeriod(line string) bool {
 
 func (p *JagoParser) parseTransactionBlock(lines []string, dateIndex int, pocket string) (core.Transaction, int) {
 	tx := core.Transaction{
-		Date:	lines[dateIndex],
+		Date:	core.ParseJagoDate(lines[dateIndex]),
 		Notes:	"-",
 	}
 

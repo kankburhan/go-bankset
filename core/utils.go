@@ -1,9 +1,55 @@
 package core
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
+	"time"
 )
+
+// jagoMonthMap maps abbreviated month names (used by Bank Jago) to month numbers.
+var jagoMonthMap = map[string]int{
+	"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "mei": 5,
+	"jun": 6, "jul": 7, "aug": 8, "agu": 8, "sep": 9,
+	"oct": 10, "okt": 10, "nov": 11, "dec": 12, "des": 12,
+}
+
+// ParseJagoDate converts Bank Jago date format "d MMM YYYY" → "YYYY-MM-DD".
+// Returns the original string unchanged if parsing fails.
+func ParseJagoDate(date string) string {
+	parts := strings.Fields(strings.TrimSpace(date))
+	if len(parts) != 3 {
+		return date
+	}
+
+	month, ok := jagoMonthMap[strings.ToLower(parts[1])]
+	if !ok {
+		return date
+	}
+
+	t, err := time.Parse("2006-01-02", fmt.Sprintf("%s-%02d-%02d",
+		parts[2], month, mustAtoi(parts[0])))
+	if err != nil {
+		return date
+	}
+
+	return t.Format("2006-01-02")
+}
+
+// ParseBCADate converts BCA date format "DD/MM/YYYY" → "YYYY-MM-DD".
+// Returns the original string unchanged if parsing fails.
+func ParseBCADate(date string) string {
+	t, err := time.Parse("02/01/2006", strings.TrimSpace(date))
+	if err != nil {
+		return date
+	}
+	return t.Format("2006-01-02")
+}
+
+func mustAtoi(s string) int {
+	n, _ := strconv.Atoi(s)
+	return n
+}
 
 // CompactLine trims space and collapses multiple spaces into one.
 func CompactLine(line string) string {

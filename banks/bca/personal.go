@@ -133,7 +133,7 @@ func (p *PersonalParser) parsePersonalRow(line string) core.Transaction {
 
 	return core.Transaction{
 		Date:			formatBCADate(date),
-		Time:			"-",
+		Time:			"",
 		SourceDestination:	"-",
 		TransactionDetail:	description,
 		MutationType:		mutationType,

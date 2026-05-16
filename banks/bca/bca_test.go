@@ -68,8 +68,8 @@ func TestBCAPersonalParser(t *testing.T) {
 	}
 
 	tx := pocket.Transactions[0]
-	if tx.Date != "02/05/2026" {
-		t.Errorf("date = %q, want %q", tx.Date, "02/05/2026")
+	if tx.Date != "2026-05-02" {
+		t.Errorf("date = %q, want %q", tx.Date, "2026-05-02")
 	}
 	if tx.MutationType != "CR" {
 		t.Errorf("mutation_type = %q, want %q", tx.MutationType, "CR")
@@ -120,8 +120,8 @@ func TestBCABisnisParser(t *testing.T) {
 	}
 
 	tx := pocket.Transactions[0]
-	if tx.Date != "13/05/2026" {
-		t.Errorf("date = %q, want %q", tx.Date, "13/05/2026")
+	if tx.Date != "2026-05-13" {
+		t.Errorf("date = %q, want %q", tx.Date, "2026-05-13")
 	}
 	if tx.MutationType != "CR" {
 		t.Errorf("mutation_type = %q, want %q", tx.MutationType, "CR")
